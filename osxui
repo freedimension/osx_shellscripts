@@ -1,0 +1,23 @@
+#!/bin/bash
+
+case $1 in
+	help)
+		echo 'usage: osxui <command> [<args>]\\\n'
+		echo 'spotlight [show|hide]'
+		echo 'hiddenfiles [show|hide]'
+	;;
+	spotlight)
+		if [ $2 = 'hide' ];
+			then
+				sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+				echo 'Spotlight icon is now hidden.'
+			else
+				sudo chmod 755 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+				echo 'Spotlight icon is now shown.'
+		fi
+		killall SystemUIServer
+	;;
+	hiddenfiles)
+	;;
+esac
+
